@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="62.658" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="To purchase jewelry items" name="To testing jewelry modules" time="62.067">
+<system-out><![CDATA[
+Given User click the jewelry option.........................................passed
+Then user select the Block and White Diamond Heart..........................passed
+And user click to the add to cart option....................................passed
+Then click to the shopping cart button......................................passed
+And user  click the terms and condition of shopping.........................passed
+And user click to checkout button...........................................passed
+And user click  billing continue option.....................................passed
+And user  click to the shipping continue....................................passed
+Then user click the ground button option....................................passed
+And user click the method continue button...................................passed
+Then user have click the cash...............................................passed
+And user click the delivery continue........................................passed
+Then user click the userfinal option........................................passed
+]]></system-out>
+</testcase>
+</testsuite>

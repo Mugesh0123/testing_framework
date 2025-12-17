@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="Cucumber" time="17.364" tests="1" skipped="0" failures="0" errors="0">
+<testcase classname="Login the website" name="User should login the website" time="16.7">
+<system-out><![CDATA[
+Given user should be in login  page "https://sharks.sivajigroups.com".......passed
+When user  enter phone number "8248151460"..................................passed
+And user enter password "admin".............................................passed
+And user click login button.................................................passed
+And user click profile icon.................................................passed
+Then click logout option....................................................passed
+]]></system-out>
+</testcase>
+</testsuite>
