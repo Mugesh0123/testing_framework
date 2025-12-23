@@ -3,14 +3,15 @@ package stepdefinition;
 import io.cucumber.java.en.*;
 import pageobjectmanager.PageObjectManager;
 import pages.LoginPageElement;
+import utils.BaseUtils;
 
 public class LoginPage extends LoginPageElement{
 	
 	
 	@Given("user should be in login  page {string}")
 	public void user_should_be_in_login_page(String string) {
-		lanchBrowser();
-		url(string);
+		launchBrowser();
+		openUrl(string);
 		
 	   	}
 
@@ -37,6 +38,13 @@ public class LoginPage extends LoginPageElement{
 	public void click_logout_option() {
 //		buttonClick(PageObjectManager.getInstanceLogin().getLogout());
 //
+	}
+
+	@When("i close the browser")
+	public void i_close_the_browser() {
+	    // Write code here that turns the phrase above into concrete actions
+	   // throw new io.cucumber.java.PendingException();
+		driver.close();
 	}
 
 

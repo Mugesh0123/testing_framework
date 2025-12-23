@@ -8,3 +8,4 @@ Scenario: User should login the website
     And user click login button
     And user click profile icon
     Then click logout option
+    When i close the browser
