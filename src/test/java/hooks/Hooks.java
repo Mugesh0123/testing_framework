@@ -27,10 +27,13 @@ public class Hooks extends BaseUtils {
 	public void beforeScenario(Scenario scenario){
 		if(driver==null) {
 			launchBrowser();
-			openUrl("https://sharks.sivajigroups.com/");
+			//openUrl("https://sharks.sivajigroups.com/");
+			openApplicationUrl();
+			log.info("User able to enter mail id and password");
 			 fillTheTextBox(PageObjectManager.getInstanceLogin().getPhoneNumber(),"8248151460");
 			 fillTheTextBox(PageObjectManager.getInstanceLogin().getPassword(), "admin");
 			 buttonClick(PageObjectManager.getInstanceLogin().getSignButton());
+			 log.info("User click signin button");
 			
 		}	
 	}

@@ -6,7 +6,9 @@ import java.io.InputStream;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,17 +17,22 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class BaseUtils {
+
+public class BaseUtils extends LoggerUtils {
 
     public static WebDriver driver;
     private static WebDriverWait wait;
     private static final int WAIT_TIME = 30;
 
-    private static Properties properties = new Properties();
+    protected static Properties properties = new Properties();
 
+    protected static Logger log =
+            LoggerUtils.getLogger(BaseUtils.class);
+    
     // ---------------- BROWSER ----------------
 
     public static void launchBrowser() {
+    	log.info("Launching browser");
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, Duration.ofSeconds(WAIT_TIME));
@@ -38,22 +45,31 @@ public class BaseUtils {
     }
 
     // ---------------- PROPERTIES ----------------
+   
 
-    public static String getProperty(String key) {
+    static {
         try (InputStream input =
-                     new FileInputStream("properties/config.properties")) {
+                     new FileInputStream("C:\\Users\\vinot\\git\\testing_framework\\properties\\config.properties")) {
             properties.load(input);
         } catch (IOException e) {
             throw new RuntimeException("Failed to load config file", e);
         }
-        return properties.getProperty(key);
     }
 
+    public static String getProperty(String key) {
+        return properties.getProperty(key);
+    }
+    public static void openApplicationUrl() {
+        driver.get(getProperty("url"));
+    }
     // ---------------- NAVIGATION ----------------
 
     public static void openUrl(String url) {
         driver.get(url);
     }
+    
+    
+
 
     // ---------------- WAITS ----------------
 
@@ -74,10 +90,18 @@ public class BaseUtils {
 
     // ---------------- ACTIONS ----------------
 
-    public static void clickElement(WebElement element) {
+    public static void clickElementWhenOverlayGone(WebElement element) {
         waitForClickable(element).click();
     }
 
+    public static void clickElement(WebElement element) {
+        waitForClickable(element).click();
+          
+    }
+    
+    public static void clickWhenReady(WebElement element) {
+        waitForClickable(element).click();
+    }
     public static void type(WebElement element, String text) {
         WebElement el = waitForVisible(element);
         el.clear();
@@ -89,16 +113,26 @@ public class BaseUtils {
     }
 
     public static void selectByValue(WebElement element, String value) {
-        new Select(element).selectByValue(value);
+        WebElement dropdown = waitForVisible(element);
+        new Select(dropdown).selectByValue(value);
     }
 
-    public static void selectByIndex(WebElement element, int index) {
-        new Select(element).selectByIndex(index);
+    public static void selectByIndexByDropdown(WebElement element, int index) {
+        WebElement dropdown = waitForVisible(element);
+        Select select = new Select(dropdown);
+
+        if (index < 0 || index >= select.getOptions().size()) {
+            throw new IllegalArgumentException("Invalid dropdown index: " + index);
+        }
+
+        select.selectByIndex(index);
     }
 
     public static void selectByVisibleText(WebElement element, String text) {
-        new Select(element).selectByVisibleText(text);
+        WebElement dropdown = waitForVisible(element);
+        new Select(dropdown).selectByVisibleText(text);
     }
+
 
     public static void scrollIntoView(WebElement element) {
         ((JavascriptExecutor) driver)
@@ -110,4 +144,24 @@ public class BaseUtils {
     }
     public static void fillTheTextBox(WebElement element, String text) { element.sendKeys(text); }
     public static void buttonClick(WebElement element) { element.click(); }
-}
+    public static boolean isElementVisible(WebElement element) {
+        try {
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    public void forceClearTextBox(WebElement element) {
+        element.click();
+        element.sendKeys(Keys.CONTROL + "a");
+        element.sendKeys(Keys.DELETE);
+    }
+
+    
+    
+    
+    }
+
+
+
+
