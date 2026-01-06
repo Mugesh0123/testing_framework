@@ -15,10 +15,6 @@ Feature: Add Branches Functionality
     And the admin enters the branch name as "Theni North"
     And the admin clicks on the Save Changes button
     And the admin waits until the transfer details are loaded
-
-
-
-
-    Examples:
+     Examples:
       | BranchName  | Location | ContactNumber |
       | Theni South | Cumbum   | 8682850408    |
