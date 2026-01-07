@@ -3611,3 +3611,17 @@
 2026-01-03 11:45:14 INFO  utils.BaseUtils - User able to select the second District
 2026-01-03 11:45:14 INFO  utils.BaseUtils - User able to click second time of dropdown button
 2026-01-03 11:45:14 INFO  utils.BaseUtils - User able to click Save  Button
+2026-01-03 15:08:38 INFO  utils.BaseUtils - Launching browser
+2026-01-03 15:08:51 INFO  utils.BaseUtils - User able to enter mail id and password
+2026-01-03 15:08:52 INFO  utils.BaseUtils - User click signin button
+2026-01-03 15:08:54 INFO  utils.BaseUtils - User able to click Administration Menu
+2026-01-03 15:08:55 INFO  utils.BaseUtils - User able to click Branches Option
+2026-01-03 15:08:56 INFO  utils.BaseUtils - User able to click Add Branch Button
+2026-01-03 15:08:56 INFO  utils.BaseUtils - User able to click Enter Branch Name
+2026-01-03 15:08:57 INFO  utils.BaseUtils - User able to click Enter Branch Location
+2026-01-03 15:08:57 INFO  utils.BaseUtils - User able to click Enter Contact Number
+2026-01-03 15:08:58 INFO  utils.BaseUtils - User able to click Save Branch Button
+2026-01-03 15:09:08 INFO  utils.BaseUtils - User able to click Edit Button
+2026-01-03 15:09:09 INFO  utils.BaseUtils - User able to click Enter Contact Number
+2026-01-03 15:09:09 INFO  utils.BaseUtils - User able to click Enter Contact Number
+2026-01-03 15:09:10 INFO  utils.BaseUtils - User able to click Save Branch Button
